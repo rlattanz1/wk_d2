@@ -10,6 +10,19 @@
   </head>
 
   <body>
+
+    <% if logged_in? %>
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="submit" value="LOGOUT IDIOT">
+      </form>
+    <% else %>
+      <form action="<%= session_url %>" method= "POST">
+        <input type="submit" value= "SIGN IN STUPID USER">
+      </form>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
